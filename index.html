@@ -21,7 +21,22 @@ CREA UNA FUNZIONE CHE AL CARICAMENTO DELLA PAGINA TI CHIEDA SE SEI DELLA CLASSE 
             }
         }
     }
-    richiestaClasse();
+    
+    function indovinaNumero() //verrà crato un numero casuale e l'utente lo deve capire
+    {
+        let numeroCasuale = Math.floor(Math.random() * 11); //genera numero intero casuale tra 0 e 10
+        confirm(numeroCasuale);
+        let risposta = prompt("e' stato generato un numero casuale tra 0 e 10. Indovina quale é?");
+        if(risposta == numeroCasuale.toString())
+        {
+            document.write("hai vinto un premio");
+        }
+        else
+        {
+            document.write("non hai vinto un premio");
+        }
+    }
+    indovinaNumero();
 </script>
 <body>
     
