@@ -1,0 +1,29 @@
+<!---
+
+CREA UNA FUNZIONE CHE AL CARICAMENTO DELLA PAGINA TI CHIEDA SE SEI DELLA CLASSE 5AI. 
+-->
+<!DOCTYPE html>
+<html lang="it">
+<head><title>Ciao Mondo!</title></head>
+<script>
+    function richiestaClasse()
+    {
+        if(confirm("SEI DELLA CLASSE 5AI?") == true)
+        {
+            document.getElementById("demo").innerHTML = "OK, NON SEI ECCO ..."; //sbagliato volevo stampasse 
+        }
+        else
+        {
+            let classe = prompt("quale classe freguenti");
+            if(classe = "")
+            {
+                document.getElementById("demo").innerHTML = "OK, BENVENUTO NELLA CLASSE " . classe; //sbagliato volevo stampasse 
+            }
+        }
+    }
+    richiestaClasse();
+</script>
+<body>
+    
+</body>
+</html>
