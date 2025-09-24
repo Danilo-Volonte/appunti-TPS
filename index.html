@@ -2,43 +2,42 @@
 
 CREA UNA FUNZIONE CHE AL CARICAMENTO DELLA PAGINA TI CHIEDA SE SEI DELLA CLASSE 5AI. 
 -->
+
 <!DOCTYPE html>
 <html lang="it">
 <head><title>Ciao Mondo!</title></head>
-<script>
-    function richiestaClasse()
-    {
-        if(confirm("SEI DELLA CLASSE 5AI?") == true)
-        {
-            document.getElementById("demo").innerHTML = "OK, NON SEI ECCO ..."; //sbagliato volevo stampasse 
+
+  <body>
+    Inserisci un numero:
+    <input type="number" id="numero">
+    <button onclick="saluta()">Invia</button>
+  
+    <p id="risultato"></p>
+  
+    <script>
+      function saluta() {
+        let numeroUtente = document.getElementById("numero").value; //prende input tramite un id e una coversione in float
+        let messaggio = "";
+  
+        if(numeroUtente >= 19 && numeroUtente <= 25)
+        { 
+            messaggio = "temperatita normale";
         }
-        else
+        else if(numeroUtente >= 5 && numeroUtente < 19)
         {
-            let classe = prompt("quale classe freguenti");
-            if(classe = "")
-            {
-                document.getElementById("demo").innerHTML = "OK, BENVENUTO NELLA CLASSE " . classe; //sbagliato volevo stampasse 
-            }
+            messaggio = "sitauzione di pericolo, mancano " + toInt(19 - numeroUtente) + "gradi dal minimo accettabile";
         }
+        else if(numeroUtente < 5)
+        {
+            messaggio = "danni irreparabili";
+        }
+        else if(numeroUtente > 25)
+        {
+            messaggio = "SITUAZIONE DI PERICOLO, mancano " + toInt(numeroUtente - 25) + "gradi dal minimo accettabile";
+        }
+        document.getElementById("risultato").textContent = messaggio;
     }
     
-    function indovinaNumero() //verrà crato un numero casuale e l'utente lo deve capire
-    {
-        let numeroCasuale = Math.floor(Math.random() * 11); //genera numero intero casuale tra 0 e 10
-        confirm(numeroCasuale);
-        let risposta = prompt("e' stato generato un numero casuale tra 0 e 10. Indovina quale é?");
-        if(risposta == numeroCasuale.toString())
-        {
-            document.write("hai vinto un premio");
-        }
-        else
-        {
-            document.write("non hai vinto un premio");
-        }
-    }
-    indovinaNumero();
 </script>
-<body>
-    
-</body>
+
 </html>
