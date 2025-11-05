@@ -10,14 +10,14 @@
         <h1> Profilo Studente </h1> <br>
         <p id="nome"></p> <br>
         <p id="classe"></p> <br>
-        <p id="materie preferite"></p> <br>
+        <p id="materiePreferiteH"></p> <br>
         <script>
             
             const datiJason = 
             `{
                 "nome": "Luca Rossi",
                 "classe": "5B",
-                "materie preferite": ["informatica", "TPS", "sistemi?"]
+                "materiePreferite": ["informatica", "TPS", "sistemi"]
             }`;
 
 
@@ -26,7 +26,25 @@
 
             document.getElementById("nome").textContent = "nome: " + studente.nome;
             document.getElementById("classe").textContent = "classe: " + studente.classe;
-            document.getElementById("materie preferite").textContent = "materie preferite: " + studente.materiePreferite;
+            document.getElementById("materiePreferiteH").textContent = "materie preferite: " + stampaListaStringhe(studente.materiePreferite);
+
+
+            function stampaListaStringhe(lista) //stampa tutti gli elelmnti della lista 
+            {
+                if (Array.isArray(lista)) //constrolla se lista è un array
+                {
+                    let risultato = "";
+                    for(let posizione = 0; posizione < lista.length; posizione++) 
+                    {
+                        risultato += " " + lista[posizione] + ", ";
+                    }
+                    return risultato;
+
+                } else 
+                {
+                    return "Il parametro non è una lista";
+                }
+            }
         </script>
     </body>
 </html>
