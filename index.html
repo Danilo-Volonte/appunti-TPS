@@ -1,43 +1,32 @@
-<!---
-
-CREA UNA FUNZIONE CHE AL CARICAMENTO DELLA PAGINA TI CHIEDA SE SEI DELLA CLASSE 5AI. 
--->
-
 <!DOCTYPE html>
 <html lang="it">
-<head><title>Ciao Mondo!</title></head>
+    <head>
+        <meta charset="UTF-8">
+        <title>JASON E SITI</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <h1> Profilo Studente </h1> <br>
+        <p id="nome"></p> <br>
+        <p id="classe"></p> <br>
+        <p id="materie preferite"></p> <br>
+        <script>
+            
+            const datiJason = 
+            `{
+                "nome": "Luca Rossi",
+                "classe": "5B",
+                "materie preferite": ["informatica", "TPS", "sistemi?"]
+            }`;
 
-  <body>
-    Inserisci un numero:
-    <input type="number" id="numero">
-    <button onclick="saluta()">Invia</button>
-  
-    <p id="risultato"></p>
-  
-    <script>
-      function saluta() {
-        let numeroUtente = document.getElementById("numero").value; //prende input tramite un id e una coversione in float
-        let messaggio = "";
-  
-        if(numeroUtente >= 19 && numeroUtente <= 25)
-        { 
-            messaggio = "temperatita normale";
-        }
-        else if(numeroUtente >= 5 && numeroUtente < 19)
-        {
-            messaggio = "sitauzione di pericolo, mancano " + toInt(19 - numeroUtente) + "gradi dal minimo accettabile";
-        }
-        else if(numeroUtente < 5)
-        {
-            messaggio = "danni irreparabili";
-        }
-        else if(numeroUtente > 25)
-        {
-            messaggio = "SITUAZIONE DI PERICOLO, mancano " + toInt(numeroUtente - 25) + "gradi dal minimo accettabile";
-        }
-        document.getElementById("risultato").textContent = messaggio;
-    }
-    
-</script>
 
+            //trasforma da dazionario, in questo caso, a un file jason
+            const studente = JSON.parse(datiJason);
+
+            document.getElementById("nome").textContent = "nome: " + studente.nome;
+            document.getElementById("classe").textContent = "classe: " + studente.classe;
+            document.getElementById("materie preferite").textContent = "materie preferite: " + studente.materiePreferite;
+        </script>
+    </body>
 </html>
