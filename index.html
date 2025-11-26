@@ -1,50 +1,62 @@
 <!DOCTYPE html>
 <html lang="it">
-    <head>
-        <meta charset="UTF-8">
-        <title>JASON E SITI</title>
-        <style>
-        </style>
-    </head>
-    <body>
-        <h1> Profilo Studente </h1> <br>
-        <p id="nome"></p> <br>
-        <p id="classe"></p> <br>
-        <p id="materiePreferiteH"></p> <br>
-        <script>
-            
-            const datiJason = 
-            `{
-                "nome": "Luca Rossi",
-                "classe": "5B",
-                "materiePreferite": ["informatica", "TPS", "sistemi"]
-            }`;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-COMMERCE telefoni - Login</title>
+</head>
+<body>
+    <h1>E-COMMERCE telefoni</h1>
 
+    <button onclick="inizio()">Premi qui per iniziare</button>
 
-            //trasforma da dazionario, in questo caso, a un file jason
-            const studente = JSON.parse(datiJason);
+    <h2>Accedi o iscriviti</h2>
 
-            document.getElementById("nome").textContent = "nome: " + studente.nome;
-            document.getElementById("classe").textContent = "classe: " + studente.classe;
-            document.getElementById("materiePreferiteH").textContent = "materie preferite: " + stampaListaStringhe(studente.materiePreferite);
+    <div>
+        <label for="email">Email:</label>
+        <input id="email" type="email" placeholder="Inserisci la tua email">
+        <br><br>
+        <label for="password">Password:</label>
+        <input id="password" type="password" placeholder="Inserisci la tua password">
+        <br><br>
+        <button onclick="login()">LOGGATI</button>
+        <button onclick="iscrizione()">ISCRIVITI</button>
+    </div>
 
+    <script>
+        function inizio() {
+            confirm("Benvenuto nel nostro e-commerce di telefoni!");
+        }
 
-            function stampaListaStringhe(lista) //stampa tutti gli elelmnti della lista 
-            {
-                if (Array.isArray(lista)) //constrolla se lista è un array
-                {
-                    let risultato = "";
-                    for(let posizione = 0; posizione < lista.length; posizione++) 
-                    {
-                        risultato += " " + lista[posizione] + ", ";
-                    }
-                    return risultato;
+        function login() {
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
 
-                } else 
-                {
-                    return "Il parametro non è una lista";
-                }
+            if (email.length > 0 && password.length > 0) {
+                // Nessun popup: andiamo alla pagina di controllo dati
+                const url = "controllo-dati.html?azione=login"
+                    + "&email=" + encodeURIComponent(email)
+                    + "&password=" + encodeURIComponent(password);
+                window.location.href = url;
+            } else {
+                confirm("Devi inserire sia email che password per effettuare il login.");
             }
-        </script>
-    </body>
+        }
+
+        function iscrizione() {
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (email.length > 0 && password.length > 0) {
+                // Nessun popup: andiamo alla pagina di controllo dati
+                const url = "controllo-dati.html?azione=iscrizione"
+                    + "&email=" + encodeURIComponent(email)
+                    + "&password=" + encodeURIComponent(password);
+                window.location.href = url;
+            } else {
+                confirm("Devi inserire sia email che password per iscriverti.");
+            }
+        }
+    </script>
+</body>
 </html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controllo dati</title>
+</head>
+<body>
+    <h1>Controllo dati</h1>
+
+    <div id="messaggio"></div>
+
+    <div id="riepilogo" style="margin-top:20px;"></div>
+
+    <div style="margin-top:20px;">
+        <button onclick="conferma()">Conferma</button>
+        <button onclick="annulla()">Annulla / Modifica dati</button>
+    </div>
+
+    <script>
+        // Legge i parametri dalla query string
+        function getParametro(nome) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(nome);
+        }
+
+        const azione = getParametro("azione");      // login / iscrizione
+        const email = getParametro("email");
+        const password = getParametro("password");
+
+        const messaggioDiv = document.getElementById("messaggio");
+        const riepilogoDiv = document.getElementById("riepilogo");
+
+        if (!email || !password) {
+            messaggioDiv.textContent = "Dati mancanti o non validi. Torna alla pagina iniziale per reinserire i dati.";
+        } else {
+            // Messaggio in base al tipo di azione
+            if (azione === "iscrizione") {
+                messaggioDiv.textContent = "Stai per completare l'iscrizione con questi dati:";
+            } else {
+                messaggioDiv.textContent = "Stai per effettuare il login con questi dati:";
+            }
+
+            const passwordMascherata = "*".repeat(password.length);
+
+            riepilogoDiv.innerHTML =
+                "<p><strong>Email:</strong> " + email + "</p>" +
+                "<p><strong>Password:</strong> " + passwordMascherata + " (lunghezza " + password.length + " caratteri)</p>";
+        }
+
+        function conferma() {
+            // Se i dati non sono validi, non procediamo
+            if (!email || !password) {
+                confirm("Dati non validi. Torna alla pagina iniziale.");
+                annulla();
+                return;
+            }
+            // Vai alla pagina ecommerce
+            window.location.href = "ecommerce.html";
+        }
+
+        function annulla() {
+            // Torna alla pagina iniziale per modificare i dati
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

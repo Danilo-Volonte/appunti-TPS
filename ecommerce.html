@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <title>BOTTEGA DELLO SMARTH PHONE </title>
+</head>
+<body class = "w3-light-blue">
+    <p class = "w3-blue"> Benvenuto, nella Bottega Dello Smartphone. Scegli un telefono tra quelli sotto</p>
+    <button onclick = "compraTutto()"> COMPRA TUTTO IL CARRELLO</button> <!-- l'ho messo qua così se il sito avrebbe tanti telefoni almeno l'utrente non doveva andare in fondo alla pagina per comprare-->
+    <table class = "w3-table w3-bordered w3-hoverable">
+        <tr class = "w3-blue">
+            <th>CASA PRODUZIONE</th>
+            <th>MODELLO</th>
+            <th>IMMAGINE</th>
+            <th> BOTTONE</th>
+        </tr>
+
+
+        <tr class = "w3-cyan">
+            <th>Apple</th>
+            <th> iPhone15</th>
+            <th> <img src = "iPhone15.jpg"> <img></th>
+            <th> <button onclick = "compra('iPhone15')"> metti nel carrelllo </button></th>
+        </tr>
+
+        <tr class = "w3-cyan">
+            <th>Apple</th>
+            <th>iPhone16</th>
+            <th><img src = "iPhone16.jpg"></th>
+            <th> <button onclick = "compra('iPhone16')"> metti nel carrelllo </button></th>
+        </tr>
+
+
+        <tr class = "w3-cyan">
+            <th>Apple</th>
+            <th>iPhone17</th>
+            <th><img src = "iPhone17.jpg"></th>
+            <th> <button onclick = "compra('iPhone17')"> metti nel carrelllo </button></th>
+        </tr>
+
+    </table>
+
+    <script>
+        let carrello = []; //lista per i telefoni che l'utente ha messo nel carrello
+        function compra(telefono)
+        {
+            carrello.add(telefono); //aggiunge il telefono nel carrello
+            confirm("io tuo ordine è stato aggiunto al carrello, clicca il bottone in altro alla pagine per comprare ogni cosa che hai nel carrello");
+        }
+
+        function compraTutto()
+        {
+            if(len(carrello) > 0) //controllo se il carrelo ha qualcosa 
+            {
+                for(let i = 0; i == len(carrello); i++) //prendo tutti i valori del carrello e li faccio comprare all'utente 
+                {
+                    confirm("hai appena comprato: " + carrello[i]);
+                }
+            }
+            else { confirm("non hai ancoira messo qualcosa nel carrello");}
+        }
+    </script>
+</body>
+</html>
