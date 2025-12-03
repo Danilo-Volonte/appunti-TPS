@@ -7,17 +7,31 @@
 
 </head>
 <body>
-    <p id = "fattoGatti"></p>
-    <input type = "button" id="chiamaAPI" value="GENERA FATTO CASUALE"> </input>
-
+    <p id = "tempo"></p>
+    <select id="paese">
+        <option value="milano">MILANO</option>
+        <option value="bergamo">BERGAMO</option>
+        <option value="brescia">BRESCIA</option>
+        <option value="como">COMO</option>
+    </select>
 
     <script>
         document.getElementById("chiamaAPI").addEventListener("click", richiestaAPI); //aggiungiamo evento al bottone (onclick non va e inoltre è troppo vecchio)
 
-        async function richiestaAPI()
+        async function richiestaAPI(paese)
         {
+            let latitudineLongitudinePaesi = //prima latitudine e seconda longitudine
+            {
+                "milano" : ["45.4642", "9.1900"],
+                "bergamo" : ["45.6983", "9.6773"],
+                "brescia" : ["45.5416", "10.2118"],
+                "como" : ["45.8080", "9.0852"],
+            }
+
+            let longitudine = latitudineLongitudinePaesi[paese][0];
+            let latitudine = latitudineLongitudinePaesi[paese][1];
             let fatto = document.getElementById("fattoGatti");
-            let risposta = await fetch("https://catfact.ninja/fact");
+            let risposta = await fetch("https://api.open-meteo.com/v1/forecast?latitude=${latitudine}&longitude=${longitudine}&hourly=temperature_2m&timezone=Europe/Rome");
             console.log(risposta);
             if(risposta.ok == true) //controlla se la risposta è avvneuta con successo 
             {
