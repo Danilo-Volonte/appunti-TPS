@@ -8,19 +8,11 @@
 <body>
     <script>
         let caratteri = ["a","b","c"];
-        
-        //array.forEach((nome_elemento_array, nome_indice, array) => { codice })
-        //posso mettere anche solo un parametro
-        caratteri.forEach((carattere, indice) => {
-            console.log(indice);
-            console.log(carattere);
-        })
+        let voti = [7,8,9,2,5,7,8,9,2,5];
 
-        caratteri.forEach((carattere, indice, arrayIntero) => {
-            console.log(indice);
-            console.log(carattere);
-            console.log(arrayIntero);
-        })
+        let votiMag5 = voti.filter(voto=>voto>= 5); //filtra i voti a seconda dela condizione che gli diamo 
+        console.log(votiMag5);
+        
     </script>
 
 </body>
