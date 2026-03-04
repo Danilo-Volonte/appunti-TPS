@@ -7,11 +7,12 @@
 </head>
 <body>
     <script>
-        let caratteri = ["a","b","c"];
+        let caratteri = ["a","b","c","c"];
         let voti = [7,8,9,2,5,7,8,9,2,5];
 
-        let votiMag5 = voti.filter(voto=>voto>= 5); //filtra i voti a seconda dela condizione che gli diamo 
-        console.log(votiMag5);
+        let caratteriSoloC = caratteri.filter(carattere=>carattere == "c"); //filtra i voti a seconda dela condizione che gli diamo 
+        //filter restituise un altro array
+        console.log(caratteriSoloC);
         
     </script>
 
