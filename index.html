@@ -3,54 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mostra cose sui gatti sempre diverso</title>
-
+    <title>Document</title>
 </head>
 <body>
-    <p id = "tempo"></p>
-    <select id="paese">
-        <option value="milano">MILANO</option>
-        <option value="bergamo">BERGAMO</option>
-        <option value="brescia">BRESCIA</option>
-        <option value="como">COMO</option>
-    </select>
-
     <script>
-        document.getElementById("chiamaAPI").addEventListener("click", richiestaAPI); //aggiungiamo evento al bottone (onclick non va e inoltre è troppo vecchio)
-
-        async function richiestaAPI(paese)
+        let voti = [7,8,9,2,5,7,8,9,2,5];
+        for(let i = 0; i < voti.length; i++)
         {
-            let latitudineLongitudinePaesi = //prima latitudine e seconda longitudine
-            {
-                "milano" : ["45.4642", "9.1900"],
-                "bergamo" : ["45.6983", "9.6773"],
-                "brescia" : ["45.5416", "10.2118"],
-                "como" : ["45.8080", "9.0852"],
-            }
-
-            let longitudine = latitudineLongitudinePaesi[paese][0];
-            let latitudine = latitudineLongitudinePaesi[paese][1];
-            let fatto = document.getElementById("fattoGatti");
-            let risposta = await fetch("https://api.open-meteo.com/v1/forecast?latitude=${latitudine}&longitude=${longitudine}&hourly=temperature_2m&timezone=Europe/Rome");
-            console.log(risposta);
-            if(risposta.ok == true) //controlla se la risposta è avvneuta con successo 
-            {
-                //faccio in modo che il jason sia una classe 
-                //deserializzo body per renderlo un oggetto JASON
-                let frase = await risposta.json();
-                let testo = frase.fact;
-                console.log(testo);
-                //facciamo un'altra rishiesta per tradurre in italiano
-                let rispostaTraduzione = await fetch(`https://api.mymemory.translated.net/get?q=${testo}&langpair=en|it`); //da non fare troppe volte 
-                if(rispostaTraduzione.ok == true)
-                {
-                    let testoTradotto = await rispostaTraduzione.json();
-                    fatto.textContent = testoTradotto.reponseData.translatedText;
-                }
-                else { fatto.textContent = "ERRORE NELLA RICHIESTA TRADUZIONE";}
-            }
-            else{ fatto.textContent = "ERRORE NELLA RISCHIESTA PRIMA DELLA TRADUZIONE";}
+            console.log(voti[i]);
         }
+
+
+        //array.forEach((nome_elemento_array, nome_indice, array) => { codice })
+        //posso mettere anche solo un parametro
+        voti.forEach(voto => {
+            console.log(voto);
+        })
+
     </script>
+
 </body>
 </html>
